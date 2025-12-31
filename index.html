@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viralixo - Social Media Content Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-light: #6b8cc0;
+            --secondary: #ff8a5c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 0 60px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .input-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .topic-input {
+            width: 100%;
+            padding: 18px 20px;
+            font-size: 18px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .topic-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .generate-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .generate-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Platform Selection */
+        .platform-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .platform {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px;
+            background-color: var(--light);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .platform:hover {
+            border-color: var(--primary-light);
+        }
+
+        .platform.active {
+            border-color: var(--primary);
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+
+        .platform i {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .youtube { color: #FF0000; }
+        .facebook { color: #1877F2; }
+        .instagram { color: #E4405F; }
+        .tiktok { color: #000000; }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+        }
+
+        .result-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .result-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .result-title h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .copy-btn {
+            background-color: var(--light-gray);
+            color: var(--dark);
+            border: none;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .content-box {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            white-space: pre-line;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Pages */
+        .page {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .page h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .page p {
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+                margin-top: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .platform {
+                min-width: calc(50% - 15px);
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .page {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .platform {
+                min-width: 100%;
+            }
+            
+            .hero {
+                padding: 25px 15px;
+            }
+            
+            .topic-input {
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <i class="fas fa-viruses"></i>
+                <span>Viralixo</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+                    <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
+                    <li><a href="#" onclick="showPage('terms')">Terms & Conditions</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Page (Default) -->
+        <section id="home-page">
+            <!-- Hero Section -->
+            <div class="hero">
+                <h1>Viralixo</h1>
+                <p>Apne social media content ko ek click mein generate karein. Title, description, hashtags aur captions ke liye best tool.</p>
+                
+                <div class="input-section">
+                    <input type="text" class="topic-input" id="topicInput" placeholder="Apna topic yaan title likhein...">
+                    <button class="generate-btn" onclick="generateContent()">
+                        <i class="fas fa-magic"></i>
+                        Generate Content
+                    </button>
+                </div>
+            </div>
+
+            <!-- Platform Selection -->
+            <div class="platform-section">
+                <h2 class="section-title">
+                    <i class="fas fa-share-alt"></i>
+                    Platform Selection
+                </h2>
+                <p style="margin-bottom: 20px; color: var(--gray);">Apna platform select karein. Har platform ke liye specialized content generate hoga.</p>
+                
+                <div class="platforms">
+                    <div class="platform active" data-platform="youtube" onclick="selectPlatform(this)">
+                        <i class="fab fa-youtube youtube"></i>
+                        <span>YouTube</span>
+                    </div>
+                    <div class="platform" data-platform="facebook" onclick="selectPlatform(this)">
+                        <i class="fab fa-facebook facebook"></i>
+                        <span>Facebook</span>
+                    </div>
+                    <div class="platform" data-platform="instagram" onclick="selectPlatform(this)">
+                        <i class="fab fa-instagram instagram"></i>
+                        <span>Instagram</span>
+                    </div>
+                    <div class="platform" data-platform="tiktok" onclick="selectPlatform(this)">
+                        <i class="fab fa-tiktok tiktok"></i>
+                        <span>TikTok</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="results-section">
+                <h2 class="section-title">
+                    <i class="fas fa-file-alt"></i>
+                    Generated Content
+                </h2>
+                
+                <!-- Title Suggestions -->
+                <div class="result-card">
+                    <div class="result-title">
+                        <h3>Title Suggestions</h3>
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'title-content')">
+                            <i class="far fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                    <div class="content-box" id="title-content">
+                        Generated titles will appear here...
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="result-card">
+                    <div class="result-title">
+                        <h3>Description</h3>
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'description-content')">
+                            <i class="far fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                    <div class="content-box" id="description-content">
+                        Generated description will appear here...
+                    </div>
+                </div>
+                
+                <!-- Hashtags -->
+                <div class="result-card">
+                    <div class="result-title">
+                        <h3>Hashtags</h3>
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'hashtags-content')">
+                            <i class="far fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                    <div class="content-box" id="hashtags-content">
+                        Generated hashtags will appear here...
+                    </div>
+                </div>
+                
+                <!-- Captions -->
+                <div class="result-card">
+                    <div class="result-title">
+                        <h3>Captions</h3>
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'captions-content')">
+                            <i class="far fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                    <div class="content-box" id="captions-content">
+                        Generated captions will appear here...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="about-page" class="page" style="display: none;">
+            <h2>About Us</h2>
+            <p>Viralixo ek free social media content generator hai jise is liye banaya gaya hai ke har koi asani se apne liye relevant content bana sake.</p>
+            <p>Hamara maqsad hai ke small businesses, influencers, aur normal users bhi professional level ka content generate kar saken bina kisi mushkil ke.</p>
+            <p>Yeh tool bilkul free hai aur isme login ki zaroorat nahi hai. Aap yahan se kisi bhi topic par content generate kar sakte hain.</p>
+            <p>Hamari team social media experts aur developers se mil kar bani hai jo is tool ko behtar banane ke liye kaam karte rehte hain.</p>
+        </section>
+
+        <!-- Contact Us Page -->
+        <section id="contact-page" class="page" style="display: none;">
+            <h2>Contact Us</h2>
+            <p>Agar aap ke koi sawaal hain, suggestions hain, ya koi masla hai toh hamse contact kar sakte hain:</p>
+            <p><strong>Email:</strong> support@viralixo.com</p>
+            <p><strong>Phone:</strong> +92 300 1234567</p>
+            <p><strong>Address:</strong> Karachi, Pakistan</p>
+            <p>Ham koshish karenge ke 24 hours mein aap ko reply de dein.</p>
+        </section>
+
+        <!-- Privacy Policy Page -->
+        <section id="privacy-page" class="page" style="display: none;">
+            <h2>Privacy Policy</h2>
+            <p>Viralixo aap ki privacy ka bohat khayal rakhta hai. Yeh privacy policy batati hai ke ham aap ka data kaise istemal karte hain.</p>
+            <p>Ham aap ka diya hua topic content generate karne ke liye istemal karte hain. Ham aap ka personal data nahi collect karte.</p>
+            <p>Ham aap ka data kisi third-party ko nahi bechte aur na hi share karte hain.</p>
+            <p>Ham cookies ka istemal website ki performance behtar karne ke liye karte hain.</p>
+            <p>Agar aap ke privacy se related koi sawaal hain toh hamse contact kar saktay hain.</p>
+        </section>
+
+        <!-- Terms & Conditions Page -->
+        <section id="terms-page" class="page" style="display: none;">
+            <h2>Terms & Conditions</h2>
+            <p>Viralixo istemal karne se pehle in terms ko padh lein:</p>
+            <p>Yeh tool free hai aur is ka istemal aap apni marzi se kar sakte hain.</p>
+            <p>Generate kiya gaya content aap ki responsibility hai. Ham kisi bhi nuqsan ke liye zimmedar nahi hain.</p>
+            <p>Aap generate kiye gaye content ko commercial istemal kar sakte hain.</p>
+            <p>Ham kisi bhi waqt bina notice ke website ya services mein changes kar sakte hain.</p>
+            <p>Yeh tool AI-based hai, is liye content ki accuracy ki guarantee nahi hai. Aap ko content check karna chahiye.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-viruses"></i>
+                        <span>Viralixo</span>
+                    </div>
+                    <p>Social media content generator. Free aur easy-to-use tool har kisi ke liye.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showPage('terms')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Viralixo. All rights reserved. | No login required. Fast and simple.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        });
+
+        // Platform Selection
+        let selectedPlatform = 'youtube';
+        
+        function selectPlatform(element) {
+            // Remove active class from all platforms
+            document.querySelectorAll('.platform').forEach(platform => {
+                platform.classList.remove('active');
+            });
+            
+            // Add active class to clicked platform
+            element.classList.add('active');
+            selectedPlatform = element.getAttribute('data-platform');
+        }
+
+        // Show different pages
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('section[id$="-page"]').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').style.display = 'block';
+            
+            // Close mobile menu if open
+            document.getElementById('mainNav').classList.remove('active');
+        }
+
+        // Generate Content Function
+        function generateContent() {
+            const topic = document.getElementById('topicInput').value.trim();
+            
+            if (!topic) {
+                alert('Please enter a topic first!');
+                document.getElementById('topicInput').focus();
+                return;
+            }
+            
+            // Show results section
+            document.getElementById('results-section').style.display = 'block';
+            
+            // Generate content based on platform and topic
+            const content = generateContentForPlatform(topic, selectedPlatform);
+            
+            // Update the content boxes
+            document.getElementById('title-content').textContent = content.titles;
+            document.getElementById('description-content').textContent = content.description;
+            document.getElementById('hashtags-content').textContent = content.hashtags;
+            document.getElementById('captions-content').textContent = content.captions;
+            
+            // Scroll to results
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Content generation logic
+        function generateContentForPlatform(topic, platform) {
+            const content = {
+                titles: '',
+                description: '',
+                hashtags: '',
+                captions: ''
+            };
+            
+            // Common content parts
+            const titlesList = [
+                `${topic} - Complete Guide`,
+                `5 Best Tips for ${topic}`,
+                `${topic} Explained in Simple Words`,
+                `How to Master ${topic} Quickly`,
+                `${topic}: Everything You Need to Know`
+            ];
+            
+            const hashtagsList = [
+                `#${topic.replace(/\s+/g, '')}`,
+                `#${topic.replace(/\s+/g, '_')}`,
+                `#SocialMediaTips`,
+                `#ContentCreation`,
+                `#DigitalMarketing`,
+                `#Viralixo`
+            ];
+            
+            // Platform-specific adjustments
+            if (platform === 'youtube') {
+                content.titles = titlesList.join('\n\n');
+                content.description = `In this video, we're talking all about ${topic}. We'll cover the basics, advanced tips, and everything in between.\n\nIf you found this video helpful, please like and subscribe for more content like this!\n\nTimestamps:\n0:00 Introduction\n1:15 What is ${topic}?\n3:30 How to use ${topic}\n5:45 Advanced tips\n8:20 Conclusion`;
+                content.hashtags = hashtagsList.concat(['#YouTube', '#YouTubeTips', '#VideoMarketing']).join(' ');
+                content.captions = `Just uploaded a new video about ${topic}! Check it out and let me know what you think in the comments below. 🔥\n\nLink in bio!`;
+            }
+            else if (platform === 'facebook') {
+                content.titles = titlesList.slice(0, 3).join('\n\n');
+                content.description = `Hey everyone! Today I want to share some insights about ${topic}. This is something that can really help you improve your social media game.\n\nLet me know in the comments if you have any questions!`;
+                content.hashtags = hashtagsList.concat(['#Facebook', '#FacebookMarketing', '#SocialMedia']).join(' ');
+                content.captions = `New post alert! 🚀\n\nJust shared some valuable tips about ${topic}. Check it out and share with friends who might find it useful!`;
+            }
+            else if (platform === 'instagram') {
+                content.titles = titlesList.slice(0, 2).join('\n\n');
+                content.description = `Swipe left for tips! 👈\n\nToday we're diving into ${topic}. This is perfect for anyone looking to up their Instagram game.\n\nSave this post for later and share with a friend who needs to see this!`;
+                content.hashtags = hashtagsList.concat(['#Instagram', '#InstaTips', '#InstagramMarketing', '#ContentCreator']).join(' ');
+                content.captions = `New post about ${topic}! 💫\n\nWhat's your favorite tip from this post? Let me know below! 👇\n\nDouble tap if you found this helpful! ❤️`;
+            }
+            else if (platform === 'tiktok') {
+                content.titles = titlesList.slice(0, 2).join('\n\n');
+                content.description = `Learn about ${topic} in 60 seconds! ⏰\n\n#fyp #foryou #learnontiktok`;
+                content.hashtags = hashtagsList.concat(['#TikTok', '#TikTokTips', '#FYP', '#ForYou', '#LearnOnTikTok']).join(' ');
+                content.captions = `POV: You're learning about ${topic} in under a minute! 🚀\n\nFollow for more quick tips! 🔥\n\n#fyp #foryoupage`;
+            }
+            
+            return content;
+        }
+
+        // Copy to Clipboard Function
+        function copyToClipboard(button, contentId) {
+            const content = document.getElementById(contentId).textContent;
+            
+            navigator.clipboard.writeText(content).then(() => {
+                // Show copied state
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Copy failed. Please try again.');
+            });
+        }
+
+        // Initialize with example content on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Set an example topic
+            document.getElementById('topicInput').value = "Social Media Marketing";
+            
+            // Generate example content
+            setTimeout(() => {
+                generateContent();
+            }, 500);
+        });
+    </script>
+</body>
+  </html>
