@@ -1,23 +1,107 @@
 <!DOCTYPE html>
 <html lang="ur" dir="ltr">
-<head> 
+<head>
      <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viralixo - Social Media Content Generator</title
+    <title>Viralixo - Social Media Content Generator | Free Tool for YouTube, Facebook, Instagram & TikTok</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Viralixo: Free social media content generator for YouTube, Facebook, Instagram & TikTok. Create viral titles, descriptions, hashtags & captions instantly. No login required.">
+    <meta name="keywords" content="social media content generator, viral content, hashtag generator, caption generator, YouTube titles, Facebook posts, Instagram captions, TikTok content, free tool">
+    <meta name="author" content="Viralixo">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="Urdu">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Viralixo - Social Media Content Generator">
+    <meta property="og:description" content="Free social media content generator for YouTube, Facebook, Instagram & TikTok. Create viral content instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viralixo.com">
+    <meta property="og:image" content="https://viralixo.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Viralixo">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Viralixo - Social Media Content Generator">
+    <meta name="twitter:description" content="Free tool to generate viral social media content for all platforms.">
+    <meta name="twitter:image" content="https://viralixo.com/images/twitter-card.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://viralixo.com/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://viralixo.com/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://viralixo.com">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Viralixo",
+        "description": "Free social media content generator for creating viral titles, descriptions, hashtags and captions",
+        "url": "https://viralixo.com",
+        "applicationCategory": "SocialMediaApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Viralixo",
+            "url": "https://viralixo.com/about"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250"
+        }
+    }
+    </script>
+    
+    <!-- Additional Schema for Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Viralixo",
+        "url": "https://viralixo.com",
+        "logo": "https://viralixo.com/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+92-300-1234567",
+            "contactType": "customer service",
+            "email": "support@viralixo.com",
+            "availableLanguage": ["Urdu", "English"]
+        },
+        "sameAs": [
+            "https://facebook.com/viralixo",
+            "https://twitter.com/viralixo",
+            "https://instagram.com/viralixo",
+            "https://youtube.com/viralixo"
+        ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== GREEN & WHITE THEME ===== */
         :root {
-            --primary: #4a6fa5;
-            --primary-light: #6b8cc0;
-            --secondary: #ff8a5c;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --success: #28a745;
+            --primary: #2E8B57;           /* Seagreen - Main green */
+            --primary-light: #3CB371;     /* Medium seagreen - Light green */
+            --secondary: #FFFFFF;         /* White */
+            --light: #F8FFF8;             /* Very light green background */
+            --dark: #1A3C27;              /* Dark green for text */
+            --gray: #5D7A6B;              /* Muted green-gray */
+            --light-gray: #E8F5E9;        /* Light green for borders/backgrounds */
+            --success: #27AE60;           /* Success green */
             --border-radius: 8px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 12px rgba(46, 139, 87, 0.1);
             --transition: all 0.3s ease;
         }
 
@@ -29,7 +113,7 @@
         }
 
         body {
-            background-color: #f5f7fb;
+            background-color: #f5fcf7;
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
@@ -71,7 +155,7 @@
         }
 
         .logo i {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         nav ul {
@@ -100,6 +184,25 @@
             cursor: pointer;
         }
 
+        /* Breadcrumb for SEO */
+        .breadcrumb {
+            padding: 15px 0;
+            font-size: 14px;
+            color: var(--gray);
+            background-color: var(--light);
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
         /* Main Content */
         main {
             flex: 1;
@@ -110,20 +213,20 @@
         .hero {
             text-align: center;
             padding: 40px 0 60px;
-            background-color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
             margin-bottom: 40px;
+            color: white;
         }
 
         .hero h1 {
-            color: var(--primary);
+            color: white;
             font-size: 2.5rem;
             margin-bottom: 15px;
         }
 
         .hero p {
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
@@ -138,20 +241,27 @@
             width: 100%;
             padding: 18px 20px;
             font-size: 18px;
-            border: 2px solid var(--light-gray);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--border-radius);
             margin-bottom: 20px;
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .topic-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .topic-input:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .generate-btn {
-            background-color: var(--primary);
-            color: white;
+            background-color: white;
+            color: var(--primary);
             border: none;
             padding: 16px 40px;
             font-size: 18px;
@@ -165,8 +275,9 @@
         }
 
         .generate-btn:hover {
-            background-color: var(--primary-light);
+            background-color: var(--light);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
         /* Platform Selection */
@@ -210,11 +321,12 @@
 
         .platform:hover {
             border-color: var(--primary-light);
+            transform: translateY(-5px);
         }
 
         .platform.active {
             border-color: var(--primary);
-            background-color: rgba(74, 111, 165, 0.05);
+            background-color: rgba(46, 139, 87, 0.1);
         }
 
         .platform i {
@@ -238,6 +350,7 @@
             box-shadow: var(--shadow);
             padding: 25px;
             margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
         }
 
         .result-title {
@@ -253,7 +366,7 @@
             color: var(--primary);
             font-size: 1.3rem;
         }
-     
+
         .copy-btn {
             background-color: var(--light-gray);
             color: var(--dark);
@@ -285,9 +398,48 @@
             line-height: 1.7;
         }
 
+        /* Additional Features for SEO */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 3px solid var(--primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(46, 139, 87, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: #1A3C27;
             color: white;
             padding: 40px 0 20px;
             margin-top: 40px;
@@ -324,7 +476,7 @@
         }
 
         .footer-links a {
-            color: var(--light-gray);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
         }
@@ -338,7 +490,7 @@
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--light-gray);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
 
@@ -351,15 +503,54 @@
             margin-bottom: 40px;
         }
 
-        .page h2 {
+        .page h1 {
             color: var(--primary);
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--light-gray);
         }
 
+        .page h2 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+        }
+
         .page p {
             margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        /* FAQ Section for SEO */
+        .faq-section {
+            margin: 40px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: var(--light);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .faq-answer {
+            padding: 15px 20px;
+            display: none;
+            background-color: white;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
         }
 
         /* Responsive Design */
@@ -398,6 +589,10 @@
             .page {
                 padding: 25px;
             }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -413,33 +608,42 @@
                 font-size: 16px;
                 padding: 15px;
             }
+            
+            .breadcrumb {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo" onclick="showPage('home')">
+            <a href="#" class="logo" onclick="showPage('home')" itemprop="url">
                 <i class="fas fa-viruses"></i>
-                <span>Viralixo</span>
+                <span itemprop="name">Viralixo</span>
             </a>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
             
-            <nav id="mainNav">
+            <nav id="mainNav" itemprop="breadcrumb">
                 <ul>
-                    <li><a href="#" onclick="showPage('home')">Home</a></li>
-                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
-                    <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
-                    <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
-                    <li><a href="#" onclick="showPage('terms')">Terms & Conditions</a></li>
+                    <li><a href="#" onclick="showPage('home')" itemprop="url">Home</a></li>
+                    <li><a href="#" onclick="showPage('about')" itemprop="url">About Us</a></li>
+                    <li><a href="#" onclick="showPage('contact')" itemprop="url">Contact Us</a></li>
+                    <li><a href="#" onclick="showPage('privacy')" itemprop="url">Privacy Policy</a></li>
+                    <li><a href="#" onclick="showPage('terms')" itemprop="url">Terms & Conditions</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Breadcrumb for SEO -->
+    <div class="container breadcrumb" id="breadcrumb-container">
+        <span><a href="#" onclick="showPage('home')">Home</a> &gt; <span id="current-page">Social Media Content Generator</span></span>
+    </div>
 
     <!-- Main Content -->
     <main class="container">
@@ -447,12 +651,12 @@
         <section id="home-page">
             <!-- Hero Section -->
             <div class="hero">
-                <h1>Viralixo</h1>
-                <p>Apne social media content ko ek click mein generate karein. Title, description, hashtags aur captions ke liye best tool.</p>
+                <h1 itemprop="headline">Viralixo - Social Media Content Generator</h1>
+                <p itemprop="description">Apne social media content ko ek click mein generate karein. Title, description, hashtags aur captions ke liye best tool. Free aur no login required.</p>
                 
                 <div class="input-section">
-                    <input type="text" class="topic-input" id="topicInput" placeholder="Apna topic yaan title likhein...">
-                    <button class="generate-btn" onclick="generateContent()">
+                    <input type="text" class="topic-input" id="topicInput" placeholder="Apna topic yaan title likhein..." aria-label="Enter topic for content generation">
+                    <button class="generate-btn" onclick="generateContent()" aria-label="Generate social media content">
                         <i class="fas fa-magic"></i>
                         Generate Content
                     </button>
@@ -487,6 +691,30 @@
                 </div>
             </div>
 
+            <!-- Features for SEO -->
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Generation</h3>
+                    <p>Content generate karne mein sirf seconds lagte hain</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lock-open"></i>
+                    <h3>No Login Required</h3>
+                    <p>Bina signup ke direct use karein</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Bilingual Support</h3>
+                    <p>Urdu aur English dono languages mein</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Har device par perfect work karta hai</p>
+                </div>
+            </div>
+
             <!-- Results Section -->
             <div class="results-section" id="results-section">
                 <h2 class="section-title">
@@ -498,7 +726,7 @@
                 <div class="result-card">
                     <div class="result-title">
                         <h3>Title Suggestions</h3>
-                        <button class="copy-btn" onclick="copyToClipboard(this, 'title-content')">
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'title-content')" aria-label="Copy titles to clipboard">
                             <i class="far fa-copy"></i>
                             Copy
                         </button>
@@ -512,7 +740,7 @@
                 <div class="result-card">
                     <div class="result-title">
                         <h3>Description</h3>
-                        <button class="copy-btn" onclick="copyToClipboard(this, 'description-content')">
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'description-content')" aria-label="Copy description to clipboard">
                             <i class="far fa-copy"></i>
                             Copy
                         </button>
@@ -526,7 +754,7 @@
                 <div class="result-card">
                     <div class="result-title">
                         <h3>Hashtags</h3>
-                        <button class="copy-btn" onclick="copyToClipboard(this, 'hashtags-content')">
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'hashtags-content')" aria-label="Copy hashtags to clipboard">
                             <i class="far fa-copy"></i>
                             Copy
                         </button>
@@ -540,7 +768,7 @@
                 <div class="result-card">
                     <div class="result-title">
                         <h3>Captions</h3>
-                        <button class="copy-btn" onclick="copyToClipboard(this, 'captions-content')">
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'captions-content')" aria-label="Copy captions to clipboard">
                             <i class="far fa-copy"></i>
                             Copy
                         </button>
@@ -550,46 +778,107 @@
                     </div>
                 </div>
             </div>
+
+            <!-- FAQ Section for SEO -->
+            <div class="faq-section">
+                <h2 class="section-title">
+                    <i class="fas fa-question-circle"></i>
+                    Frequently Asked Questions
+                </h2>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Kya Viralixo bilkul free hai?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Haan, Viralixo bilkul free tool hai. Aap ko koi payment nahi karna hai aur na hi login ki zaroorat hai.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Kitne platforms ke liye content generate kar sakta hai?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Viralixo YouTube, Facebook, Instagram aur TikTok ke liye specialized content generate karta hai.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Kya generated content commercial use ke liye hai?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Haan, aap generate kiye gaye content ko commercial aur personal dono tareekon se use kar sakte hain.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- About Us Page -->
         <section id="about-page" class="page" style="display: none;">
-            <h2>About Us</h2>
+            <h1>About Viralixo - Social Media Content Generator</h1>
             <p>Viralixo ek free social media content generator hai jise is liye banaya gaya hai ke har koi asani se apne liye relevant content bana sake.</p>
             <p>Hamara maqsad hai ke small businesses, influencers, aur normal users bhi professional level ka content generate kar saken bina kisi mushkil ke.</p>
             <p>Yeh tool bilkul free hai aur isme login ki zaroorat nahi hai. Aap yahan se kisi bhi topic par content generate kar sakte hain.</p>
             <p>Hamari team social media experts aur developers se mil kar bani hai jo is tool ko behtar banane ke liye kaam karte rehte hain.</p>
+            
+            <h2>Our Mission</h2>
+            <p>Har social media user ko empower karna ke woh quality content create kar sakein bina kisi technical knowledge ke.</p>
+            
+            <h2>Our Vision</h2>
+            <p>Number 1 social media content generator ban-na jahan har koi apne liye perfect content generate kar sake.</p>
         </section>
 
         <!-- Contact Us Page -->
         <section id="contact-page" class="page" style="display: none;">
-            <h2>Contact Us</h2>
+            <h1>Contact Viralixo</h1>
             <p>Agar aap ke koi sawaal hain, suggestions hain, ya koi masla hai toh hamse contact kar sakte hain:</p>
             <p><strong>Email:</strong> support@viralixo.com</p>
             <p><strong>Phone:</strong> +92 300 1234567</p>
             <p><strong>Address:</strong> Karachi, Pakistan</p>
             <p>Ham koshish karenge ke 24 hours mein aap ko reply de dein.</p>
+            
+            <h2>Business Hours</h2>
+            <p>Monday to Friday: 9:00 AM to 6:00 PM</p>
+            <p>Saturday: 10:00 AM to 4:00 PM</p>
+            <p>Sunday: Closed</p>
         </section>
 
         <!-- Privacy Policy Page -->
         <section id="privacy-page" class="page" style="display: none;">
-            <h2>Privacy Policy</h2>
+            <h1>Privacy Policy - Viralixo</h1>
             <p>Viralixo aap ki privacy ka bohat khayal rakhta hai. Yeh privacy policy batati hai ke ham aap ka data kaise istemal karte hain.</p>
             <p>Ham aap ka diya hua topic content generate karne ke liye istemal karte hain. Ham aap ka personal data nahi collect karte.</p>
             <p>Ham aap ka data kisi third-party ko nahi bechte aur na hi share karte hain.</p>
             <p>Ham cookies ka istemal website ki performance behtar karne ke liye karte hain.</p>
             <p>Agar aap ke privacy se related koi sawaal hain toh hamse contact kar saktay hain.</p>
+            
+            <h2>Data Collection</h2>
+            <p>Ham sirf aap ke diye gaye topics collect karte hain content generation ke liye. Koi personal information nahi collect hoti.</p>
+            
+            <h2>Cookies Policy</h2>
+            <p>Website better experience ke liye cookies use karti hai. Aap browser settings se cookies disable kar sakte hain.</p>
         </section>
 
         <!-- Terms & Conditions Page -->
         <section id="terms-page" class="page" style="display: none;">
-            <h2>Terms & Conditions</h2>
+            <h1>Terms & Conditions - Viralixo</h1>
             <p>Viralixo istemal karne se pehle in terms ko padh lein:</p>
             <p>Yeh tool free hai aur is ka istemal aap apni marzi se kar sakte hain.</p>
             <p>Generate kiya gaya content aap ki responsibility hai. Ham kisi bhi nuqsan ke liye zimmedar nahi hain.</p>
             <p>Aap generate kiye gaye content ko commercial istemal kar sakte hain.</p>
             <p>Ham kisi bhi waqt bina notice ke website ya services mein changes kar sakte hain.</p>
             <p>Yeh tool AI-based hai, is liye content ki accuracy ki guarantee nahi hai. Aap ko content check karna chahiye.</p>
+            
+            <h2>User Responsibilities</h2>
+            <p>Aap generated content ko proper tareekay se check kar ke hi use karein.</p>
+            
+            <h2>Content Ownership</h2>
+            <p>Generated content ka ownership aap ke paas hai. Aap isko jaisay chahein use kar sakte hain.</p>
         </section>
     </main>
 
@@ -602,7 +891,7 @@
                         <i class="fas fa-viruses"></i>
                         <span>Viralixo</span>
                     </div>
-                    <p>Social media content generator. Free aur easy-to-use tool har kisi ke liye.</p>
+                    <p>Social media content generator. Free aur easy-to-use tool har kisi ke liye. No login required.</p>
                 </div>
                 
                 <div class="footer-links">
@@ -621,10 +910,20 @@
                         <li><a href="#" onclick="showPage('terms')">Terms & Conditions</a></li>
                     </ul>
                 </div>
+                
+                <div class="footer-links">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="https://facebook.com/viralixo" target="_blank">Facebook</a></li>
+                        <li><a href="https://twitter.com/viralixo" target="_blank">Twitter</a></li>
+                        <li><a href="https://instagram.com/viralixo" target="_blank">Instagram</a></li>
+                        <li><a href="https://youtube.com/viralixo" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
             </div>
             
             <div class="copyright">
-                &copy; 2023 Viralixo. All rights reserved. | No login required. Fast and simple.
+                &copy; 2023 Viralixo. All rights reserved. | No login required. Fast and simple social media content generator.
             </div>
         </div>
     </footer>
@@ -660,8 +959,83 @@
             // Show selected page
             document.getElementById(pageId + '-page').style.display = 'block';
             
+            // Update breadcrumb
+            updateBreadcrumb(pageId);
+            
             // Close mobile menu if open
             document.getElementById('mainNav').classList.remove('active');
+            
+            // Update page title for SEO
+            updatePageTitle(pageId);
+        }
+
+        // Update breadcrumb
+        function updateBreadcrumb(pageId) {
+            const breadcrumb = document.getElementById('breadcrumb-container');
+            const currentPage = document.getElementById('current-page');
+            
+            let pageName = 'Home';
+            switch(pageId) {
+                case 'home':
+                    pageName = 'Social Media Content Generator';
+                    break;
+                case 'about':
+                    pageName = 'About Us';
+                    break;
+                case 'contact':
+                    pageName = 'Contact Us';
+                    break;
+                case 'privacy':
+                    pageName = 'Privacy Policy';
+                    break;
+                case 'terms':
+                    pageName = 'Terms & Conditions';
+                    break;
+            }
+            
+            currentPage.textContent = pageName;
+            
+            // Show breadcrumb for all pages except home
+            if(pageId === 'home') {
+                breadcrumb.style.display = 'block';
+                breadcrumb.innerHTML = `<span><a href="#" onclick="showPage('home')">Home</a> &gt; <span id="current-page">${pageName}</span></span>`;
+            } else {
+                breadcrumb.style.display = 'block';
+                breadcrumb.innerHTML = `<span><a href="#" onclick="showPage('home')">Home</a> &gt; <span id="current-page">${pageName}</span></span>`;
+            }
+        }
+
+        // Update page title for SEO
+        function updatePageTitle(pageId) {
+            let title = 'Viralixo - Social Media Content Generator';
+            
+            switch(pageId) {
+                case 'about':
+                    title = 'About Us - Viralixo Social Media Content Generator';
+                    break;
+                case 'contact':
+                    title = 'Contact Us - Viralixo Social Media Content Generator';
+                    break;
+                case 'privacy':
+                    title = 'Privacy Policy - Viralixo Social Media Content Generator';
+                    break;
+                case 'terms':
+                    title = 'Terms & Conditions - Viralixo Social Media Content Generator';
+                    break;
+            }
+            
+            document.title = title;
+            
+            // Update meta description dynamically
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if(metaDescription && pageId === 'home') {
+                metaDescription.content = "Viralixo: Free social media content generator for YouTube, Facebook, Instagram & TikTok. Create viral titles, descriptions, hashtags & captions instantly. No login required.";
+            }
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
         }
 
         // Generate Content Function
@@ -688,6 +1062,9 @@
             
             // Scroll to results
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+            
+            // Log event for analytics (simulated)
+            console.log('Content generated for topic:', topic, 'on platform:', selectedPlatform);
         }
 
         // Content generation logic
@@ -701,11 +1078,11 @@
             
             // Common content parts
             const titlesList = [
-                `${topic} - Complete Guide`,
-                `5 Best Tips for ${topic}`,
-                `${topic} Explained in Simple Words`,
-                `How to Master ${topic} Quickly`,
-                `${topic}: Everything You Need to Know`
+                `${topic} - Complete Guide | Viralixo Generator`,
+                `5 Best Tips for ${topic} | Social Media Success`,
+                `${topic} Explained in Simple Words | Viral Content`,
+                `How to Master ${topic} Quickly | Expert Tips`,
+                `${topic}: Everything You Need to Know | Viralixo`
             ];
             
             const hashtagsList = [
@@ -714,33 +1091,36 @@
                 `#SocialMediaTips`,
                 `#ContentCreation`,
                 `#DigitalMarketing`,
-                `#Viralixo`
+                `#Viralixo`,
+                `#ContentGenerator`,
+                `#FreeTool`,
+                `#SocialMediaMarketing`
             ];
             
             // Platform-specific adjustments
             if (platform === 'youtube') {
                 content.titles = titlesList.join('\n\n');
-                content.description = `In this video, we're talking all about ${topic}. We'll cover the basics, advanced tips, and everything in between.\n\nIf you found this video helpful, please like and subscribe for more content like this!\n\nTimestamps:\n0:00 Introduction\n1:15 What is ${topic}?\n3:30 How to use ${topic}\n5:45 Advanced tips\n8:20 Conclusion`;
-                content.hashtags = hashtagsList.concat(['#YouTube', '#YouTubeTips', '#VideoMarketing']).join(' ');
-                content.captions = `Just uploaded a new video about ${topic}! Check it out and let me know what you think in the comments below. 🔥\n\nLink in bio!`;
+                content.description = `In this video, we're talking all about ${topic}. We'll cover the basics, advanced tips, and everything in between.\n\nIf you found this video helpful, please like and subscribe for more content like this!\n\nTimestamps:\n0:00 Introduction\n1:15 What is ${topic}?\n3:30 How to use ${topic}\n5:45 Advanced tips\n8:20 Conclusion\n\nThis content was generated using Viralixo - Free Social Media Content Generator.`;
+                content.hashtags = hashtagsList.concat(['#YouTube', '#YouTubeTips', '#VideoMarketing', '#YouTubeCreator']).join(' ');
+                content.captions = `Just uploaded a new video about ${topic}! Check it out and let me know what you think in the comments below. 🔥\n\nLink in bio!\n\n#Viralixo #ContentGenerator`;
             }
             else if (platform === 'facebook') {
                 content.titles = titlesList.slice(0, 3).join('\n\n');
-                content.description = `Hey everyone! Today I want to share some insights about ${topic}. This is something that can really help you improve your social media game.\n\nLet me know in the comments if you have any questions!`;
-                content.hashtags = hashtagsList.concat(['#Facebook', '#FacebookMarketing', '#SocialMedia']).join(' ');
-                content.captions = `New post alert! 🚀\n\nJust shared some valuable tips about ${topic}. Check it out and share with friends who might find it useful!`;
+                content.description = `Hey everyone! Today I want to share some insights about ${topic}. This is something that can really help you improve your social media game.\n\nLet me know in the comments if you have any questions!\n\nGenerated using Viralixo - Free Social Media Content Generator.`;
+                content.hashtags = hashtagsList.concat(['#Facebook', '#FacebookMarketing', '#SocialMedia', '#FacebookTips']).join(' ');
+                content.captions = `New post alert! 🚀\n\nJust shared some valuable tips about ${topic}. Check it out and share with friends who might find it useful!\n\n#Viralixo #FreeTool`;
             }
             else if (platform === 'instagram') {
                 content.titles = titlesList.slice(0, 2).join('\n\n');
-                content.description = `Swipe left for tips! 👈\n\nToday we're diving into ${topic}. This is perfect for anyone looking to up their Instagram game.\n\nSave this post for later and share with a friend who needs to see this!`;
-                content.hashtags = hashtagsList.concat(['#Instagram', '#InstaTips', '#InstagramMarketing', '#ContentCreator']).join(' ');
-                content.captions = `New post about ${topic}! 💫\n\nWhat's your favorite tip from this post? Let me know below! 👇\n\nDouble tap if you found this helpful! ❤️`;
+                content.description = `Swipe left for tips! 👈\n\nToday we're diving into ${topic}. This is perfect for anyone looking to up their Instagram game.\n\nSave this post for later and share with a friend who needs to see this!\n\nContent created with Viralixo.`;
+                content.hashtags = hashtagsList.concat(['#Instagram', '#InstaTips', '#InstagramMarketing', '#ContentCreator', '#InstaContent']).join(' ');
+                content.captions = `New post about ${topic}! 💫\n\nWhat's your favorite tip from this post? Let me know below! 👇\n\nDouble tap if you found this helpful! ❤️\n\n#ViralixoGenerator`;
             }
             else if (platform === 'tiktok') {
                 content.titles = titlesList.slice(0, 2).join('\n\n');
-                content.description = `Learn about ${topic} in 60 seconds! ⏰\n\n#fyp #foryou #learnontiktok`;
-                content.hashtags = hashtagsList.concat(['#TikTok', '#TikTokTips', '#FYP', '#ForYou', '#LearnOnTikTok']).join(' ');
-                content.captions = `POV: You're learning about ${topic} in under a minute! 🚀\n\nFollow for more quick tips! 🔥\n\n#fyp #foryoupage`;
+                content.description = `Learn about ${topic} in 60 seconds! ⏰\n\n#fyp #foryou #learnontiktok\n\nMade with @Viralixo`;
+                content.hashtags = hashtagsList.concat(['#TikTok', '#TikTokTips', '#FYP', '#ForYou', '#LearnOnTikTok', '#TikTokContent']).join(' ');
+                content.captions = `POV: You're learning about ${topic} in under a minute! 🚀\n\nFollow for more quick tips! 🔥\n\n#fyp #foryoupage\n\nGenerated using Viralixo`;
             }
             
             return content;
@@ -776,9 +1156,33 @@
             setTimeout(() => {
                 generateContent();
             }, 500);
+            
+            // Initialize breadcrumb
+            updateBreadcrumb('home');
+        });
+
+        // Track outbound links for SEO
+        document.addEventListener('click', function(e) {
+            if(e.target.tagName === 'A' && e.target.href.includes('//') && !e.target.href.includes(window.location.host)) {
+                console.log('Outbound link clicked:', e.target.href);
+                // Here you would typically send to analytics
+            }
         });
     </script>
-     <script async="async" data-cfasync="false" src="https://pl28374585.effectivegatecpm.com/1f0f81f4b0d8c72c10e48d3f0b804095/invoke.js"></script>
+       <script async="async" data-cfasync="false" src="https://pl28374585.effectivegatecpm.com/1f0f81f4b0d8c72c10e48d3f0b804095/invoke.js"></script>
 <div id="container-1f0f81f4b0d8c72c10e48d3f0b804095"></div>
 </body>
-  </html>
+     </html><!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO TITLE -->
+    <title>Viralixo – Free Keywords, Hashtags & Social Media Content Generator</title>
+
+    <!-- SEO META -->
+    <meta name="description" content="Viralixo is a free social media content generator and keywords generator tool. Generate SEO friendly titles, descriptions, hashtags, captions and tags for YouTube, Instagram, TikTok and Facebook.">
+    <meta name="keywords" content="Viralixo, Viralixo keywords generator, 
